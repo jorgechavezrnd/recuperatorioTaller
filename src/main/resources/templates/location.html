@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Location</title>
+</head>
+<body>
+<a href="/">Root</a><br/><br/>
+<div class="container">
+    <h2>Location Details</h2>
+    <div>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Location Id:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${location.id}">Location Id</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Lat:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${location.lat}">Lat</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Ing:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${location.ing}">Ing</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Likes:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${location.likes}"></p>
+                    <a th:href="'/location/like/'+${location.id}">Like</a>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Terminal:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${location.getTerminalSerial()}">Terminal</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Draw Map:</label>
+                <div class="col-sm-10">
+                    <a th:href="'/location/drawmap/'+${location.id}">draw_map</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

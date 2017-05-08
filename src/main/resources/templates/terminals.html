@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head lang="en">
+        <title>Terminals</title>
+    </head>
+    <body>
+        <a href="/">Root</a><br/><br/>
+        <a href="/terminal/new">New Terminal</a>
+        <div class="container">
+            <div th:if="${not #lists.isEmpty(terminals)}">
+                <h2>Terminal List</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Id</th>
+                        <th>Serial</th>
+                        <th>Active</th>
+                        <th>Category</th>
+                        <th>User</th>
+                        <th>View</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    <tr th:each="terminal : ${terminals}">
+                        <td th:text="${terminal.id}"><a href="/terminal/${terminal.id}">Id</a></td>
+                        <td th:text="${terminal.serial}">Serial</td>
+                        <td th:text="${terminal.active}">Active</td>
+                        <td th:text="${terminal.getCategoryName()}">Category</td>
+                        <td th:text="${terminal.getUserName()}">User</td>
+                        <td><a th:href="${'/terminal/' + terminal.id}">View</a></td>
+                        <td><a th:href="${'/terminal/edit/' + terminal.id}">Edit</a></td>
+                        <td><a th:href="${'/terminal/delete/' + terminal.id}">Delete</a></td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </body>
+</html>

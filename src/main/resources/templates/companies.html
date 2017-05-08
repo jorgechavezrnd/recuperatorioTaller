@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Companies</title>
+</head>
+<body>
+<a href="/">Root</a><br/><br/>
+<a href="/company/new">New Company</a>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(companies)}">
+        <h2>Company List</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="company : ${companies}">
+                <td th:text="${company.id}"><a href="/terminal/${terminal.id}">Id</a></td>
+                <td th:text="${company.name}">Name</td>
+                <td><a th:href="${'/company/' + company.id}">View</a></td>
+                <td><a th:href="${'/company/edit/' + company.id}">Edit</a></td>
+                <td><a th:href="${'/company/delete/' + company.id}">Delete</a></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+</body>
+</html>

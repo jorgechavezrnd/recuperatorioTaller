@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head lang="en">
+        <title>Terminal</title>
+    </head>
+    <body>
+        <a href="/">Root</a><br/><br/>
+        <div class="container">
+            <h2>Terminal Details</h2>
+            <div>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Terminal Id:</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static" th:text="${terminal.id}">Terminal Id</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Serial:</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static" th:text="${terminal.serial}">Serial</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Active:</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static" th:text="${terminal.active}">Active</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Category:</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static" th:text="${terminal.getCategoryName()}">Category</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">User:</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static" th:text="${terminal.getUserName()}">User</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Locations:</label>
+                        <div class="col-sm-10" th:each="location : ${terminal.getLocations()}">
+                            <p class="form-control-static" th:text="${location.id} + ': (lat: ' + ${location.lat} + '; ing: ' + ${location.ing} + ')'">Location</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Draw Locations:</label>
+                        <div class="col-sm-10">
+                            <a th:href="'/terminal/drawlocations/'+${terminal.id}">draw_locations</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Company</title>
+</head>
+<body>
+<a href="/">Root</a><br/><br/>
+<div class="container">
+    <h2>Terminal Details</h2>
+    <div>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Company Id:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${company.id}">Location Id</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Name:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${company.name}">name</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Users:</label>
+                <div class="col-sm-10" th:each="user : ${company.getUsers()}">
+                    <p class="form-control-static" th:text="${user.getName()}">Location</p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
